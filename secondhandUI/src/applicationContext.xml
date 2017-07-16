@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- 准备要注解加的这句,必须要加这句是关键的一句 -->
+    <context:annotation-config/>
+    <!--     h在com.it 包的下面去扫描 -->
+    <context:component-scan base-package="com.it.* "/> 
+    <bean id="loginService" class="com.it.service.LoginServiceImpl">
+    </bean>
+     <bean id="loginDao" class="com.it.dao.LoginDaoImpl"> 
+      <property name="userList">
+      <list>
+        <value type="java.lang.String">苹果</value>
+        <value type="java.lang.String">鸭梨</value>
+        <value type="java.lang.String">芒果</value>
+      </list>
+    </property>
+    
+    <property name="dataSource"> 
+      <ref bean="dataSource"/> 
+        </property> 
+     </bean> 
+    
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+         <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+         <property name="maxActive" value="10"></property>
+         <property name="maxIdle" value="10"></property>
+         <property name="url" value="jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8"></property>
+         <property name="password" value="root"></property>
+         <property name="username" value="root"></property>
+    </bean>
+    
+     <bean id="loginAction" class="com.it.service.LoginAction"> </bean>
+</beans>
