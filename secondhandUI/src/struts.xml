@@ -1,31 +1,27 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE struts PUBLIC
-	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
-	"http://struts.apache.org/dtds/struts-2.3.dtd">
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
+	<constant name="struts.custom.i18n.resources" value="message"></constant>
+	
+	<package name="struts2" extends="struts-default">
 
-    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
-    <constant name="struts.devMode" value="true" />
-	<constant name="struts.action.extension" value="dog"></constant>
-    <package name="default" namespace="/" extends="struts-default">
-
-        <global-results>
-            <result name="error">/WEB-INF/jsp/error.jsp</result>
-        </global-results>
-
-        <global-exception-mappings>
-            <exception-mapping exception="java.lang.Exception" result="error"/>
-        </global-exception-mappings>
-		<action name="helloAction" class="com.it.struts.action.HelloAction">
-			<result >show.jsp</result>
-			<result name="input" type="redirect">login.jsp</result>
+		<action name="user_add" class="com.wporoad.app.web.UserAction" method="addUser" >
+			<result name="success">/WEB-INF/page/success.jsp</result>
+			<result name="error">/error.jsp</result>
 		</action>
-        
-    </package>
-
-    <include file="example.xml"/>
-
-    <!-- Add packages here -->
-
+		
+		<action name="user_list" class="com.wporoad.app.web.UserAction" method="queryUsers" >
+			<result name="success">/WEB-INF/page/success.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="list">/WEB-INF/page/UserList.jsp</result>
+		</action>
+		
+		
+		<action name="user_del" class="com.wporoad.app.web.UserAction" method="delUser" >
+			<result name="success">/WEB-INF/page/success.jsp</result>
+			<result name="error">/WEB-INF/page/error.jsp</result>
+		</action>
+		
+	</package>
 </struts>
+

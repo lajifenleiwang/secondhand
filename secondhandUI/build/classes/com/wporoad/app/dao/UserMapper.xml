@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wporoad.app.dao.UserMapper">
+
+	<resultMap id="UserMap" type="com.wporoad.app.entity.User">
+		<result property="id" column="ID" />
+		<result property="userName" column="USERNAME" />
+		<result property="password" column="PASSWORD" />
+		<result property="email" column="EMAIL" />
+	</resultMap>
+
+	<insert id="addUser" parameterType="User">
+		INSERT INTO USER(
+		ID,
+		USERNAME,
+		PASSWORD,
+		EMAIL
+		)
+		VALUES (
+		#{id},
+		#{userName},
+		#{password},
+		#{email}
+		)
+	</insert>
+	
+	<select id="queryUsers" resultMap="UserMap" >
+		SELECT * FROM USER
+	</select>
+	
+	<!-- 删除信息 -->
+	<delete id="delUser" parameterType="string">
+		DELETE FROM USER WHERE ID = #{id}
+	</delete>
+	
+</mapper>

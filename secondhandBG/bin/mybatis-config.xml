@@ -3,42 +3,42 @@
 PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-   <!-- <properties resource="jdbc.properties"/> -->
-   <properties>
-      <property name="jdbc.driverClassName" value="com.mysql.jdbc.Driver"/>
-      <property name="jdbc.url" value="jdbc:mysql://localhost:3306/db_mybatis"/>
-      <property name="jdbc.username" value="root"/>
-      <property name="jdbc.password" value="123456"/>
-   </properties>
-   <!-- <typeAliases>
-      <typeAlias alias="Student" type="com.java1234.model.Student"/>
-   </typeAliases> -->
-   <typeAliases>
-      <package name="com.it.secondhand"/>
-   </typeAliases>
-   <environments default="development">
-      <environment id="development">
-         <transactionManager type="JDBC" />
-         <dataSource type="POOLED">
-            <property name="driver" value="${jdbc.driverClassName}" />
-            <property name="url" value="${jdbc.url}" />
-            <property name="username" value="${jdbc.username}" />
-            <property name="password" value="${jdbc.password}" />
-         </dataSource>
-      </environment>
-      <environment id="test">
-         <transactionManager type="JDBC" />
-         <dataSource type="POOLED">
-            <property name="driver" value="${jdbc.driverClassName}" />
-            <property name="url" value="${jdbc.url}" />
-            <property name="username" value="${jdbc.username}" />
-            <property name="password" value="${jdbc.password}" />
-         </dataSource>
-      </environment>
-   </environments>
-   <mappers>
-      <!-- <mapper resource="com/java1234/mappers/StudentMapper.xml" /> -->
-      <!-- <mapper class="com.java1234.mappers.StudentMapper"/> -->
-      <package name="com.java1234.mappers"/>
-   </mappers>
+	<!-- <properties resource="jdbc.properties"/> -->
+	<properties>
+		<property name="jdbc.driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="jdbc.url" value="jdbc:mysql://localhost:3306/db_mybatis"/>
+		<property name="jdbc.username" value="root"/>
+		<property name="jdbc.password" value="123456"/>
+	</properties>
+	<!-- <typeAliases>
+		<typeAlias alias="Student" type="com.java1234.model.Student"/>
+	</typeAliases> -->
+	<typeAliases>
+		<package name="com.java1234.model"/>
+	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${jdbc.driverClassName}" />
+				<property name="url" value="${jdbc.url}" />
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.password}" />
+			</dataSource>
+		</environment>
+		<environment id="test">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${jdbc.driverClassName}" />
+				<property name="url" value="${jdbc.url}" />
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<!-- <mapper resource="com/java1234/mappers/StudentMapper.xml" /> -->
+		<!-- <mapper class="com.java1234.mappers.StudentMapper"/> -->
+		<package name="com.java1234.mappers"/>
+	</mappers>
 </configuration>

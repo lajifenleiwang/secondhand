@@ -3,7 +3,6 @@
 	<name>secondhandUI</name>
 	<comment></comment>
 	<projects>
-		<project>secondhandCommon</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
