@@ -4,14 +4,73 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.java1234.mappers.StudentMapper">
 
+	<!-- <resultMap type="Student" id="StudentResult">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="age" column="age"/>
+		
+		<result property="address.id" column="addressId"/>
+		<result property="address.sheng" column="sheng"/>
+		<result property="address.shi" column="shi"/>
+		<result property="address.qu" column="qu"/>
+	</resultMap> -->
+	
+	 <resultMap type="Address" id="AddressResult">
+		<result property="id" column="id"/>
+		<result property="sheng" column="sheng"/>
+		<result property="shi" column="shi"/>
+		<result property="qu" column="qu"/>
+		<association property="country" resultMap="CountryResult"/>
+	</resultMap>
+	
 	<resultMap type="Student" id="StudentResult">
 		<id property="id" column="id"/>
 		<result property="name" column="name"/>
 		<result property="age" column="age"/>
-	</resultMap>
+		<association property="address" resultMap="AddressResult"/>
+	</resultMap> 
+	
+	<resultMap type="Country" id="CountryResult">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+    </resultMap>
+	
+	<!-- <resultMap type="Student" id="StudentResult">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="age" column="age"/>
+		<association property="address" javaType="Address">
+			<result property="id" column="id"/>
+			<result property="sheng" column="sheng"/>
+			<result property="shi" column="shi"/>
+			<result property="qu" column="qu"/>
+		</association>
+	</resultMap> -->
+	
+<!-- 	<resultMap type="Student" id="StudentResult"> -->
+<!-- 		<id property="id" column="id"/> -->
+<!-- 		<result property="name" column="name"/> -->
+<!-- 		<result property="age" column="age"/> -->
+<!-- 		<association property="address" column="addressId" select="com.java1234.mappers.AddressMapper.findById"></association> -->
+<!-- 	</resultMap> -->
+<!-- 	<resultMap type="Student" id="StudentResult"> -->
+<!--         <id property="id" column="id"/> -->
+<!--         <result property="name" column="name"/> -->
+<!--         <result property="age" column="age"/> -->
+<!--         <association property="address" column="addressId" select="com.java1234.mappers.AddressMapper.findById"></association> -->
+<!--     </resultMap> -->
+    
+	<select id="findStudentWithAddress" resultMap="StudentResult" parameterType="Integer">
+	   SELECT * FROM t_student t1 INNER JOIN t_address t2 on t1.addressId = t2.id
+	     INNER JOIN country on country.id = t2.country_id where t1.id=#{id}
+	</select>
+	
+<!-- 	<select id="findStudentWithAddress" resultMap="StudentResult" parameterType="Integer"> -->
+<!-- 		select * from t_student t1,t_address t2 where t1.addressId=t2.id and t1.id=#{id} -->
+<!-- 	</select> -->
 
 	<insert id="add" parameterType="Student"  >
-		insert into t_student values(null,#{name},#{age})
+		insert into t_student values(null,#{name},#{age},1)
 	</insert>
 
 	<update id="update" parameterType="Student">

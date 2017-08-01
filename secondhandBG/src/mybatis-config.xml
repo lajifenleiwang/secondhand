@@ -3,13 +3,13 @@
 PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<!-- <properties resource="jdbc.properties"/> -->
-	<properties>
-		<property name="jdbc.driverClassName" value="com.mysql.jdbc.Driver"/>
-		<property name="jdbc.url" value="jdbc:mysql://localhost:3306/db_mybatis"/>
-		<property name="jdbc.username" value="root"/>
-		<property name="jdbc.password" value="123456"/>
-	</properties>
+	<properties resource="jdbc.properties"/> 
+<!-- 	<properties> -->
+<!-- 		<property name="jdbc.driverClassName" value="com.mysql.jdbc.Driver"/> -->
+<!-- 		<property name="jdbc.url" value="jdbc:mysql://localhost:3306/db_mybatis"/> -->
+<!-- 		<property name="jdbc.username" value="root"/> -->
+<!-- 		<property name="jdbc.password" value="123456"/> -->
+<!-- 	</properties> -->
 	<!-- <typeAliases>
 		<typeAlias alias="Student" type="com.java1234.model.Student"/>
 	</typeAliases> -->

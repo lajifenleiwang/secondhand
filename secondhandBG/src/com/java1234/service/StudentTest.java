@@ -14,7 +14,7 @@ public class StudentTest {
 	public static void main(String[] args) {
 		SqlSession sqlSession=SqlSessionFactoryUtil.openSession();
 		StudentMapper studentMapper=sqlSession.getMapper(StudentMapper.class);
-		Student student=new Student("李四",11);
+		Student student=new Student(1,"李四",11);
 		int result=studentMapper.add(student);
 		sqlSession.commit();
 		if(result>0){
